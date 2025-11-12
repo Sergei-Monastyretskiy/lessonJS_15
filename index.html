@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Пошук фільмів - LiveSearch</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Заголовок застосунку -->
+        <header class="header">
+            <h1 class="app-title">
+                <i class="fas fa-film"></i>
+                Пошук фільмів
+            </h1>
+            <p class="app-subtitle">Знайдіть свій улюблений фільм або серіал</p>
+        </header>
+
+        <!-- Пошукова панель -->
+        <div class="search-container">
+            <div class="search-box">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" id="searchInput" class="search-input"
+                    placeholder="Введіть назву фільму або серіалу..." autocomplete="off">
+                <div class="search-spinner hidden" id="searchSpinner">
+                    <i class="fas fa-spinner fa-spin"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Контейнер для результатів -->
+        <div class="results-container">
+            <!-- Кнопка для швидкого тестування (тільки для налагодження) -->
+            <div style="text-align: center; margin-bottom: 20px;">
+                <button onclick="quickTest()"
+                    style="background: #28a745; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin: 5px;">
+                    🧪 Швидкий тест пошуку
+                </button>
+                <button onclick="console.clear()"
+                    style="background: #6c757d; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin: 5px;">
+                    🧹 Очистити консоль
+                </button>
+            </div>
+
+            <!-- Повідомлення про стан -->
+            <div class="message" id="messageContainer">
+                <div class="welcome-message">
+                    <i class="fas fa-search"></i>
+                    <h3>Розпочніть пошук</h3>
+                    <p>Введіть назву фільму або серіалу, щоб побачити результати</p>
+                </div>
+            </div>
+
+            <!-- Результати пошуку -->
+            <div class="movies-grid" id="moviesGrid"></div>
+        </div>
+
+        <!-- Пагінація -->
+        <div class="pagination" id="pagination" style="display: none;">
+            <button class="pagination-btn" id="prevBtn" disabled>
+                <i class="fas fa-chevron-left"></i>
+                Попередні
+            </button>
+            <span class="page-info" id="pageInfo">Сторінка 1</span>
+            <button class="pagination-btn" id="nextBtn" disabled>
+                Наступні
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Модальне вікно для детальної інформації -->
+    <div class="modal" id="movieModal" style="display: none;">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-body" id="modalBody">
+                <!-- Контент модального вікна буде генеруватися динамічно -->
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
